@@ -12,8 +12,11 @@ int main(int argc, char** argv) {
         printf("error: file open\n");
         exit(1);
     }
+    int size = filesize(fd);
     char* buf = readfile(fd);
     printf("%s", buf);
-
+    line_edit(buf, 2, size);
+    fd = fopen(argv[1], "w");
+    save_file(buf, fd);
     return 0;
 }
