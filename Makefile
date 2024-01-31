@@ -1,4 +1,4 @@
 debug:
-	gcc -Wall -pedantic -g -o skloop main.c file.c
+	gcc -Wall -pedantic -g -o pianosa main.c file.c
 clean:
-	rm skloop
+	rm pianosa
