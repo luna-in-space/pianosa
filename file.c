@@ -20,11 +20,16 @@ char* readfile(FILE* stream) {
     return buf;
 }
 /*size is the size of the new line, if the size is wrong the string will truncate*/
+/* TODO: Fix this so it doesn't truncate strings at the line number */
 void line_edit(char* buf, int line, int size) {
-    for(int i = 0; i<line-1; i++) {
-        buf = strchr(buf, '\n') + 1; 
+    char* temp = malloc(strlen(buf) * sizeof(char));
+    strcpy(temp, buf);
+    for(int i = 0; i<strlen(buf); i++) {
+        buf = strchr(buf, '\n'); 
+        temp = strchr(temp, '\n');
     }
-    fgets(buf, size, stdin);
+    fgets(buf+1, size, stdin);
+    strcat(buf, temp);
 }
 void save_file(char* buf, FILE* fd) {
     fwrite(buf, strlen(buf), 1, fd);

@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     int size = filesize(fd);
     char* buf = readfile(fd);
     printf("%s", buf);
-    line_edit(buf, 2, size);
+    line_edit(buf, 1, size);//TODO: do not hardcode
     fd = fopen(argv[1], "w");
     save_file(buf, fd);
     return 0;
